@@ -1,2 +1,3 @@
-# press-on-nails-trend-report
-Press-on nails US attribute trend report
+# Press-on Nails Trend Report
+
+Static GitHub Pages report generated from local Amazon US press-on nails sales analysis.
