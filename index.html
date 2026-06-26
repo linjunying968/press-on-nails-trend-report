@@ -190,7 +190,7 @@ function renderTable() {
     <td>${r.source}</td><td>${r.group}</td><td><b>${r.name}</b><div class="small">${String(r.exampleTitles).slice(0,140)}...</div></td><td class="${trendClass(r.trend)}">${r.trend}</td>
     <td>${fmt(r.recent3m)}</td><td>${fmt(r.prev3m)}</td><td class="${r.growthPct>=0?'up':'down'}">${r.growthPct}%</td><td>${r.asinCount}</td><td class="small">${r.exampleAsins}</td></tr>`).join('');
 }
-window.setSort = function(key) { if(sortKey===key) sortDir*=-1; else {sortKey=key; sortDir = ['name','group','source','trend','exampleAsins'].includes(key)?1:-1;} renderTable(); }
+window.setSort = function(key) { if(sortKey===key) sortDir*=-1; else {sortKey=key; sortDir = ['name','group','source','trend','exampleAsins'].includes(key)?1:-1;} renderTable(); };
 ['search','sourceFilter','trendFilter','groupFilter','minSales'].forEach(id => $(id).addEventListener('input', () => { renderTable(); }));
 $('showTopUp').onclick = () => topBy('up'); $('showTopDown').onclick = () => topBy('down'); $('showTopVolume').onclick = () => topBy('volume'); $('clearLines').onclick = () => {selected=[]; drawChart();};
 window.addEventListener('resize', drawChart);
