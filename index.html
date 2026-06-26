@@ -1,0 +1,1585 @@
+<!doctype html>
+<html lang='zh-CN'>
+<head>
+<meta charset='utf-8'>
+<title>穿戴甲美国站属性趋势分析报告</title>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Microsoft YaHei',Arial,sans-serif;margin:0;background:#f6f7fb;color:#1f2937;}
+header{background:linear-gradient(135deg,#111827,#7c3aed);color:white;padding:34px 42px;}
+main{padding:28px 42px;}
+h1{margin:0 0 10px;font-size:30px;}
+h2{margin-top:34px;border-left:5px solid #7c3aed;padding-left:10px;}
+.note{background:#fff7ed;border-left:4px solid #f97316;padding:14px 16px;border-radius:8px;line-height:1.65;}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin-top:18px;}
+.card{background:white;border-radius:14px;padding:18px;box-shadow:0 6px 18px rgba(17,24,39,.08);}
+.num{font-size:24px;font-weight:800;color:#5b21b6;margin-bottom:6px;}
+.data-table{border-collapse:collapse;width:100%;background:white;border-radius:12px;overflow:hidden;box-shadow:0 4px 14px rgba(17,24,39,.06);font-size:13px;}
+.data-table th{background:#ede9fe;color:#312e81;text-align:left;padding:10px;position:sticky;top:0;}
+.data-table td{border-top:1px solid #e5e7eb;padding:9px;vertical-align:top;}
+.section{overflow-x:auto;margin:12px 0 28px;}
+.badge{display:inline-block;background:#eef2ff;color:#3730a3;border-radius:999px;padding:2px 8px;font-size:12px;}
+ul{line-height:1.75;}
+.footer{color:#6b7280;margin-top:40px;font-size:13px;}
+</style>
+</head>
+<body>
+<header>
+<h1>穿戴甲美国站属性趋势分析报告</h1>
+<p>基于全量 Excel 的标题 + 变体属性 + 月销量趋势分析。重点看属性趋势，不只看词频。</p>
+</header>
+<main>
+<h2>一、数据覆盖与口径</h2>
+<div class='grid'><div class='card'><div class='num'>20</div><div>正式 Excel 文件</div></div><div class='card'><div class='num'>1997</div><div>父体记录行</div></div><div class='card'><div class='num'>1997</div><div>子体记录行</div></div><div class='card'><div class='num'>13</div><div>月份数</div></div><div class='card'><div class='num'>25961</div><div>父体月销量明细</div></div><div class='card'><div class='num'>25961</div><div>子体月销量明细</div></div><div class='card'><div class='num'>0</div><div>剔除疑似单独指甲油</div></div><div class='card'><div class='num'>0</div><div>读取错误</div></div></div>
+<div class='note'>
+<b>重要口径：</b>“产品历史月销量”代表 ASIN 所在父体的整个月销，因此本报告在父体口径下按父 ASIN 去重，避免同一父体多个子体重复叠加；“子体历史月销量”只覆盖达到显示阈值的子体，因此适合看更直接的属性表现，但不能等同于全量子体销量。
+</div>
+<h2>二、建议先看的结论</h2>
+<ul>
+<li>优先参考“子体销量属性趋势”：它更接近具体颜色、甲型、长度、工艺这些属性的真实销售表现。</li>
+<li>父体口径用于判断大盘方向和父体级机会，但不要把它当成每个子体属性的真实销量。</li>
+<li>单独卖指甲油/胶类的产品已按规则剔除；标题里包含指甲油/胶水作为套装属性的保留，并作为属性记录。</li>
+<li>后续如果继续补充数据，建议保持同样字段结构，这样可以直接追加到同一套趋势模型里。</li>
+</ul>
+<h2>三、子体口径：上升属性</h2>
+<div class='section'><table border="1" class="dataframe data-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>group</th>
+      <th>attribute</th>
+      <th>trend</th>
+      <th>recent_3m_sales</th>
+      <th>prev_3m_sales</th>
+      <th>recent_vs_prev_growth</th>
+      <th>asin_count</th>
+      <th>example_asins</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>场景/人群</td>
+      <td>at home（居家美甲）</td>
+      <td>小幅上升</td>
+      <td>31500.0</td>
+      <td>27150.0</td>
+      <td>16.0%</td>
+      <td>225</td>
+      <td>B0G6BWZXL8; B0FQBX8NGT; B0G69MGX7S; B0G6BTKMYG; B0G69HS2YY</td>
+    </tr>
+    <tr>
+      <td>长度</td>
+      <td>extra short（超短款）</td>
+      <td>明显上升</td>
+      <td>23700.0</td>
+      <td>14850.0</td>
+      <td>59.6%</td>
+      <td>149</td>
+      <td>B0G5135C6Z; B0FQBX8NGT; B0G6BWZXL8; B0G6BK5MNB; B0G512Z4BC</td>
+    </tr>
+    <tr>
+      <td>长度</td>
+      <td>long（长款）</td>
+      <td>小幅上升</td>
+      <td>22150.0</td>
+      <td>18650.0</td>
+      <td>18.8%</td>
+      <td>262</td>
+      <td>B0FX3BGY6C; B0G6BTKMYG; B0FYFKVTQV; B0G59G34KS; B0GK27GTD8</td>
+    </tr>
+    <tr>
+      <td>图案/主题</td>
+      <td>flower/floral（花朵）</td>
+      <td>小幅上升</td>
+      <td>17950.0</td>
+      <td>14300.0</td>
+      <td>25.5%</td>
+      <td>596</td>
+      <td>B0G5114KDF; B0G5175YHW; B0G51N2GRN; B0G51JR5C4; B0FR54NVSJ</td>
+    </tr>
+    <tr>
+      <td>颜色</td>
+      <td>blue（蓝色）</td>
+      <td>小幅上升</td>
+      <td>5850.0</td>
+      <td>4400.0</td>
+      <td>33.0%</td>
+      <td>159</td>
+      <td>B0F9WX5HH3; B0G4ZW273H; B0FYFPNDW6; B0F9WT45J4; B0G4ZVM4J5</td>
+    </tr>
+    <tr>
+      <td>场景/人群</td>
+      <td>teens（青少年）</td>
+      <td>明显上升</td>
+      <td>3700.0</td>
+      <td>2350.0</td>
+      <td>57.5%</td>
+      <td>31</td>
+      <td>B0G1BR7TFZ; B0GK27GTD8; B0GGZNC52N; B0GH1DQ2Y6; B0GH1N3CWP</td>
+    </tr>
+    <tr>
+      <td>颜色</td>
+      <td>green（绿色）</td>
+      <td>明显上升</td>
+      <td>3450.0</td>
+      <td>2550.0</td>
+      <td>35.3%</td>
+      <td>64</td>
+      <td>B0G51N2GRN; B0G51DJTL3; B0G519JZMK; B0F9WVSCNH; B0F9WTQSDB</td>
+    </tr>
+    <tr>
+      <td>甲型</td>
+      <td>stiletto（尖形）</td>
+      <td>小幅上升</td>
+      <td>2950.0</td>
+      <td>2500.0</td>
+      <td>18.0%</td>
+      <td>57</td>
+      <td>B0G6BTKMYG; B0G6BL72QZ; B0FCFJJVTK; B0FJY1GVLQ; B0FPFTDF8S</td>
+    </tr>
+    <tr>
+      <td>场景/人群</td>
+      <td>beginners（新手）</td>
+      <td>明显上升</td>
+      <td>2900.0</td>
+      <td>600.0</td>
+      <td>383.3%</td>
+      <td>32</td>
+      <td>B0GK27GTD8; B0GGZNC52N; B0GH1N3CWP; B0GH1DQ2Y6; B0GK21HY9H</td>
+    </tr>
+    <tr>
+      <td>图案/主题</td>
+      <td>butterfly（蝴蝶）</td>
+      <td>小幅上升</td>
+      <td>1400.0</td>
+      <td>1100.0</td>
+      <td>27.3%</td>
+      <td>54</td>
+      <td>B0FYFPNDW6; B0FMK9PC5B; B0F9WTC5BF; B0FNLL14B1; B0G3TWWT7D</td>
+    </tr>
+  </tbody>
+</table></div>
+<h2>四、父体口径：上升属性信号</h2>
+<div class='section'><table border="1" class="dataframe data-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>group</th>
+      <th>attribute</th>
+      <th>trend</th>
+      <th>recent_3m_sales</th>
+      <th>prev_3m_sales</th>
+      <th>recent_vs_prev_growth</th>
+      <th>asin_count</th>
+      <th>example_asins</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>配套/材料</td>
+      <td>nail polish included（含指甲油属性）</td>
+      <td>小幅上升</td>
+      <td>1601267.0</td>
+      <td>1301618.0</td>
+      <td>23.0%</td>
+      <td>182</td>
+      <td>B0GY2VM69N; B0FBWGNVS6; B0F9WSYH1S; B0GHHDGMZD; B0F242RSVQ</td>
+    </tr>
+    <tr>
+      <td>长度</td>
+      <td>short（短款）</td>
+      <td>小幅上升</td>
+      <td>1280353.0</td>
+      <td>1061047.0</td>
+      <td>20.7%</td>
+      <td>135</td>
+      <td>B0GY2VM69N; B0FBWGNVS6; B0F9WSYH1S; B0F242RSVQ; B0FFLDSNL5</td>
+    </tr>
+    <tr>
+      <td>工艺/效果</td>
+      <td>french tip（法式边）</td>
+      <td>小幅上升</td>
+      <td>1097458.0</td>
+      <td>846526.0</td>
+      <td>29.6%</td>
+      <td>122</td>
+      <td>B0GY2WWGTH; B0FBWGNVS6; B0FF44WSV2; B0FFLDSNL5; B0FR9GHB8B</td>
+    </tr>
+    <tr>
+      <td>甲型</td>
+      <td>square（方形）</td>
+      <td>小幅上升</td>
+      <td>1054798.0</td>
+      <td>834627.0</td>
+      <td>26.4%</td>
+      <td>103</td>
+      <td>B0GY2VM69N; B0FFKZYLV1; B0F9WSK15R; B0F2437H1W; B0DJ79GB6R</td>
+    </tr>
+    <tr>
+      <td>配套/材料</td>
+      <td>glue included（含胶水）</td>
+      <td>小幅上升</td>
+      <td>1040970.0</td>
+      <td>919269.0</td>
+      <td>13.2%</td>
+      <td>78</td>
+      <td>B0FBWGNVS6; B0F9WSYH1S; B0GHHDGMZD; B0F242RSVQ; B0FFLDSNL5</td>
+    </tr>
+    <tr>
+      <td>颜色</td>
+      <td>pink（粉色）</td>
+      <td>小幅上升</td>
+      <td>1024109.0</td>
+      <td>904113.0</td>
+      <td>13.3%</td>
+      <td>108</td>
+      <td>B0FFL13G4H; B0F9WSYH1S; B0F2426PP5; B0F9WSVTLP; B0DJ79GB6R</td>
+    </tr>
+    <tr>
+      <td>甲型</td>
+      <td>almond（杏仁形）</td>
+      <td>小幅上升</td>
+      <td>870370.0</td>
+      <td>722538.0</td>
+      <td>20.5%</td>
+      <td>102</td>
+      <td>B0F242X7XM; B0F9WSYH1S; B0F242RSVQ; B0FFLDSNL5; B0FFLM17T6</td>
+    </tr>
+    <tr>
+      <td>包装/规格</td>
+      <td>16 sizes（16尺寸）</td>
+      <td>小幅上升</td>
+      <td>785073.0</td>
+      <td>591645.0</td>
+      <td>32.7%</td>
+      <td>42</td>
+      <td>B0F242X7XM; B0F9WSYH1S; B0F242RSVQ; B0FFLDSNL5; B0DJ79GB6R</td>
+    </tr>
+    <tr>
+      <td>颜色</td>
+      <td>red（红色）</td>
+      <td>小幅上升</td>
+      <td>729219.0</td>
+      <td>580936.0</td>
+      <td>25.5%</td>
+      <td>61</td>
+      <td>B0FBWFL6B6; B0F9WSYH1S; B0GCCD6JDB; B0FFLNTQSW; B0DJ79GB6R</td>
+    </tr>
+    <tr>
+      <td>颜色</td>
+      <td>white（白色）</td>
+      <td>明显上升</td>
+      <td>703629.0</td>
+      <td>446295.0</td>
+      <td>57.7%</td>
+      <td>70</td>
+      <td>B0FBWGNVS6; B0F242RSVQ; B0GDZJZDXW; B0FQBX8NGT; B0F6LNVG8P</td>
+    </tr>
+    <tr>
+      <td>包装/规格</td>
+      <td>32 pcs（32片）</td>
+      <td>小幅上升</td>
+      <td>602177.0</td>
+      <td>488211.0</td>
+      <td>23.3%</td>
+      <td>30</td>
+      <td>B0F242X7XM; B0F9WSYH1S; B0F9WT45J4; B0F9WTB2V5; B0DJ7BHZCX</td>
+    </tr>
+    <tr>
+      <td>图案/主题</td>
+      <td>flower/floral（花朵）</td>
+      <td>明显上升</td>
+      <td>600768.0</td>
+      <td>394266.0</td>
+      <td>52.4%</td>
+      <td>67</td>
+      <td>B0FFLDSNL5; B0FFM14W36; B0F996FYZG; B0FR9STNFX; B0FFLS9C9X</td>
+    </tr>
+    <tr>
+      <td>颜色</td>
+      <td>black（黑色）</td>
+      <td>小幅上升</td>
+      <td>593127.0</td>
+      <td>482189.0</td>
+      <td>23.0%</td>
+      <td>54</td>
+      <td>B0FBWFL6B6; B0F9WVF49V; B0FFLDSNL5; B0FQ613MHJ; B0F243B17P</td>
+    </tr>
+    <tr>
+      <td>颜色</td>
+      <td>nude（裸色）</td>
+      <td>明显上升</td>
+      <td>583297.0</td>
+      <td>411845.0</td>
+      <td>41.6%</td>
+      <td>70</td>
+      <td>B0F9WRY7DP; B0FD7GD499; B0F6LNVG8P; B0GLGKLYHZ; B0FYFDL9FB</td>
+    </tr>
+    <tr>
+      <td>颜色</td>
+      <td>blue（蓝色）</td>
+      <td>明显上升</td>
+      <td>575866.0</td>
+      <td>320397.0</td>
+      <td>79.7%</td>
+      <td>59</td>
+      <td>B0F9WX5HH3; B0F9WV96LS; B0F9WT45J4; B0FR9STNFX; B0G51LC5LC</td>
+    </tr>
+    <tr>
+      <td>工艺/效果</td>
+      <td>3d（三维立体）</td>
+      <td>小幅上升</td>
+      <td>529279.0</td>
+      <td>468960.0</td>
+      <td>12.9%</td>
+      <td>63</td>
+      <td>B0FF3W17GL; B0F9WTB2V5; B0FF439SZ1; B0FFLS9C9X; B0FCG2C8D8</td>
+    </tr>
+    <tr>
+      <td>颜色</td>
+      <td>gold（金色）</td>
+      <td>小幅上升</td>
+      <td>515743.0</td>
+      <td>419416.0</td>
+      <td>23.0%</td>
+      <td>52</td>
+      <td>B0FF3W17GL; B0FF44WSV2; B0F996FYZG; B0FRSSHBPC; B0FD7GQG9R</td>
+    </tr>
+    <tr>
+      <td>颜色</td>
+      <td>brown（棕色）</td>
+      <td>明显上升</td>
+      <td>510998.0</td>
+      <td>297072.0</td>
+      <td>72.0%</td>
+      <td>45</td>
+      <td>B0F9WSK15R; B0F9WVSCNH; B0GDZJZDXW; B0FX37MQTG; B0FV7Z287T</td>
+    </tr>
+    <tr>
+      <td>长度</td>
+      <td>long（长款）</td>
+      <td>明显上升</td>
+      <td>508626.0</td>
+      <td>316965.0</td>
+      <td>60.5%</td>
+      <td>61</td>
+      <td>B0GDZJZDXW; B0GK21HY9H; B0F6LNVG8P; B0G6BH91GS; B0G2RZ92Z8</td>
+    </tr>
+    <tr>
+      <td>场景/人群</td>
+      <td>at home（居家美甲）</td>
+      <td>明显上升</td>
+      <td>471208.0</td>
+      <td>190317.0</td>
+      <td>147.6%</td>
+      <td>27</td>
+      <td>B0GY2VM69N; B0GDZJZDXW; B0GK21HY9H; B0GLGKLYHZ; B0FR9GNVTJ</td>
+    </tr>
+    <tr>
+      <td>工艺/效果</td>
+      <td>glitter（闪粉）</td>
+      <td>小幅上升</td>
+      <td>463065.0</td>
+      <td>409534.0</td>
+      <td>13.1%</td>
+      <td>58</td>
+      <td>B0F2437H1W; B0FBWFTR91; B0G1BR7TFZ; B0FFLM17T6; B0FR9R5YGP</td>
+    </tr>
+    <tr>
+      <td>工艺/效果</td>
+      <td>rhinestone（水钻）</td>
+      <td>明显上升</td>
+      <td>441067.0</td>
+      <td>238079.0</td>
+      <td>85.3%</td>
+      <td>30</td>
+      <td>B0FFLWWGZG; B0F2426PP5; B0FFLWW4W3; B0GK9RF8W9; B0FD7CFKKN</td>
+    </tr>
+    <tr>
+      <td>工艺/效果</td>
+      <td>lamp curable（灯固化）</td>
+      <td>小幅上升</td>
+      <td>436303.0</td>
+      <td>371186.0</td>
+      <td>17.5%</td>
+      <td>13</td>
+      <td>B0FBWGNVS6; B0GHHDGMZD; B0FF44WSV2; B0FF44F4CH; B0FFLM17T6</td>
+    </tr>
+    <tr>
+      <td>颜色</td>
+      <td>purple（紫色）</td>
+      <td>明显上升</td>
+      <td>428348.0</td>
+      <td>286356.0</td>
+      <td>49.6%</td>
+      <td>35</td>
+      <td>B0F9WVF49V; B0F9WTC5BF; B0DJ7BHZCX; B0G3XXKCFL; B0GK9FHN17</td>
+    </tr>
+    <tr>
+      <td>工艺/效果</td>
+      <td>pearl（珍珠）</td>
+      <td>明显上升</td>
+      <td>425860.0</td>
+      <td>278995.0</td>
+      <td>52.6%</td>
+      <td>45</td>
+      <td>B0F2437H1W; B0F9WTB2V5; B0GK8P6H81; B0F6LNVG8P; B0FY5YKP7M</td>
+    </tr>
+    <tr>
+      <td>甲型</td>
+      <td>oval（椭圆形）</td>
+      <td>小幅上升</td>
+      <td>415455.0</td>
+      <td>337690.0</td>
+      <td>23.0%</td>
+      <td>28</td>
+      <td>B0FBWGNVS6; B0FBWFTR91; B0FD7GD499; B0GS29BP4D; B0G5G8SSBQ</td>
+    </tr>
+    <tr>
+      <td>图案/主题</td>
+      <td>star（星星）</td>
+      <td>明显上升</td>
+      <td>415438.0</td>
+      <td>198595.0</td>
+      <td>109.2%</td>
+      <td>34</td>
+      <td>B0FF3W17GL; B0FFLWW4W3; B0G3Q6HXFL; B0FMKB3R1N; B0G6BNVK1D</td>
+    </tr>
+    <tr>
+      <td>工艺/效果</td>
+      <td>ombre（渐变）</td>
+      <td>小幅上升</td>
+      <td>378336.0</td>
+      <td>295449.0</td>
+      <td>28.1%</td>
+      <td>48</td>
+      <td>B0FFL9BTM5; B0FQBX8NGT; B0FF94MMGC; B0FMKCNY52; B0FR9GNVTJ</td>
+    </tr>
+    <tr>
+      <td>图案/主题</td>
+      <td>leopard（豹纹）</td>
+      <td>小幅上升</td>
+      <td>371488.0</td>
+      <td>323913.0</td>
+      <td>14.7%</td>
+      <td>24</td>
+      <td>B0FFLHJK9G; B0F9WTB2V5; B0FCFZV4S9; B0FX37FTGF; B0FYG5QXLN</td>
+    </tr>
+    <tr>
+      <td>颜色</td>
+      <td>green（绿色）</td>
+      <td>明显上升</td>
+      <td>367837.0</td>
+      <td>203707.0</td>
+      <td>80.6%</td>
+      <td>34</td>
+      <td>B0F9WTQSDB; B0F9WVSCNH; B0GCNKZVQH; B0G5147RTJ; B0GK1ZR4LX</td>
+    </tr>
+  </tbody>
+</table></div>
+<h2>五、子体口径：下降属性</h2>
+<div class='section'><table border="1" class="dataframe data-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>group</th>
+      <th>attribute</th>
+      <th>trend</th>
+      <th>recent_3m_sales</th>
+      <th>prev_3m_sales</th>
+      <th>recent_vs_prev_growth</th>
+      <th>asin_count</th>
+      <th>example_asins</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>配套/材料</td>
+      <td>nail polish included（含指甲油属性）</td>
+      <td>小幅下降</td>
+      <td>144850.0</td>
+      <td>174050.0</td>
+      <td>-16.8%</td>
+      <td>1997</td>
+      <td>B0FKN4MLPB; B0G5135C6Z; B0F9WTMDCG; B0FHK5KK8Y; B0FX3BGY6C</td>
+    </tr>
+    <tr>
+      <td>长度</td>
+      <td>short（短款）</td>
+      <td>小幅下降</td>
+      <td>100950.0</td>
+      <td>123600.0</td>
+      <td>-18.3%</td>
+      <td>1070</td>
+      <td>B0FKN4MLPB; B0F9WTMDCG; B0FX3BGY6C; B0FHK5KK8Y; B0G5135C6Z</td>
+    </tr>
+    <tr>
+      <td>包装/规格</td>
+      <td>16 sizes（16尺寸）</td>
+      <td>小幅下降</td>
+      <td>76500.0</td>
+      <td>89350.0</td>
+      <td>-14.4%</td>
+      <td>398</td>
+      <td>B0F9WTMDCG; B0G5135C6Z; B0FBWG291B; B0G4ZR7WNR; B0F9WVD6NS</td>
+    </tr>
+    <tr>
+      <td>甲型</td>
+      <td>almond（杏仁形）</td>
+      <td>小幅下降</td>
+      <td>59100.0</td>
+      <td>70800.0</td>
+      <td>-16.5%</td>
+      <td>857</td>
+      <td>B0G5135C6Z; B0G51JC6GY; B0G69HS2YY; B0FBWG291B; B0G4ZR7WNR</td>
+    </tr>
+    <tr>
+      <td>工艺/效果</td>
+      <td>french tip（法式边）</td>
+      <td>小幅下降</td>
+      <td>41600.0</td>
+      <td>60100.0</td>
+      <td>-30.8%</td>
+      <td>794</td>
+      <td>B0FKN4MLPB; B0FYFKVHDJ; B0FFLM17T6; B0G51JC6GY; B0FFLNYVVT</td>
+    </tr>
+    <tr>
+      <td>颜色</td>
+      <td>nude（裸色）</td>
+      <td>小幅下降</td>
+      <td>44750.0</td>
+      <td>50900.0</td>
+      <td>-12.1%</td>
+      <td>384</td>
+      <td>B0G5135C6Z; B0F9WTWVSH; B0FQBX8NGT; B0G69HS2YY; B0G6BWZXL8</td>
+    </tr>
+    <tr>
+      <td>甲型</td>
+      <td>square（方形）</td>
+      <td>小幅下降</td>
+      <td>43900.0</td>
+      <td>49900.0</td>
+      <td>-12.0%</td>
+      <td>561</td>
+      <td>B0FQBX8NGT; B0FD9RTH4W; B0FYFKVHDJ; B0G6BBFXHT; B0F9WSJPNY</td>
+    </tr>
+    <tr>
+      <td>工艺/效果</td>
+      <td>glossy（亮面）</td>
+      <td>小幅下降</td>
+      <td>28250.0</td>
+      <td>42900.0</td>
+      <td>-34.2%</td>
+      <td>442</td>
+      <td>B0FKN4MLPB; B0FD9RTH4W; B0FSKJ87HZ; B0FPWZMTYZ; B0FYFKVHDJ</td>
+    </tr>
+    <tr>
+      <td>包装/规格</td>
+      <td>32 pcs（32片）</td>
+      <td>小幅下降</td>
+      <td>26700.0</td>
+      <td>38800.0</td>
+      <td>-31.2%</td>
+      <td>285</td>
+      <td>B0F9WTMDCG; B0FBWFL6B6; B0FD9RTH4W; B0F9WRY7DP; B0FFLNYVVT</td>
+    </tr>
+    <tr>
+      <td>长度</td>
+      <td>medium（中长款）</td>
+      <td>小幅下降</td>
+      <td>18950.0</td>
+      <td>29150.0</td>
+      <td>-35.0%</td>
+      <td>465</td>
+      <td>B0FBWFL6B6; B0G69MGX7S; B0FYFPNDW6; B0FYFKVTQV; B0G6BGXJTY</td>
+    </tr>
+    <tr>
+      <td>包装/规格</td>
+      <td>30 pcs（30片）</td>
+      <td>小幅下降</td>
+      <td>20700.0</td>
+      <td>27900.0</td>
+      <td>-25.8%</td>
+      <td>241</td>
+      <td>B0F9WTWVSH; B0FQBX8NGT; B0F9WSK15R; B0F9WSJPNY; B0F9WX5HH3</td>
+    </tr>
+    <tr>
+      <td>工艺/效果</td>
+      <td>lamp curable（灯固化）</td>
+      <td>小幅下降</td>
+      <td>19350.0</td>
+      <td>27800.0</td>
+      <td>-30.4%</td>
+      <td>64</td>
+      <td>B0G5135C6Z; B0FBWG291B; B0FFLM17T6; B0FBWFL6B6; B0G51JC6GY</td>
+    </tr>
+    <tr>
+      <td>工艺/效果</td>
+      <td>3d（三维立体）</td>
+      <td>小幅下降</td>
+      <td>17750.0</td>
+      <td>24750.0</td>
+      <td>-28.3%</td>
+      <td>767</td>
+      <td>B0G51N2GRN; B0G4ZR7WNR; B0FSKJ87HZ; B0G5175YHW; B0G51JR5C4</td>
+    </tr>
+    <tr>
+      <td>工艺/效果</td>
+      <td>cat eye（猫眼）</td>
+      <td>明显下降</td>
+      <td>13150.0</td>
+      <td>20800.0</td>
+      <td>-36.8%</td>
+      <td>161</td>
+      <td>B0FKN4MLPB; B0F9WT7MQ4; B0FPWZMTYZ; B0F9WX5HH2; B0F9WT45J4</td>
+    </tr>
+    <tr>
+      <td>工艺/效果</td>
+      <td>glitter（闪粉）</td>
+      <td>明显下降</td>
+      <td>10150.0</td>
+      <td>19550.0</td>
+      <td>-48.1%</td>
+      <td>169</td>
+      <td>B0FFLM17T6; B0FPWZMTYZ; B0FFLFV5HZ; B0FQBLW4YX; B0G6BGXJTY</td>
+    </tr>
+    <tr>
+      <td>颜色</td>
+      <td>red（红色）</td>
+      <td>明显下降</td>
+      <td>6650.0</td>
+      <td>16650.0</td>
+      <td>-60.1%</td>
+      <td>176</td>
+      <td>B0F9WTMDCG; B0G4ZR7WNR; B0F243B17P; B0FBWFL6B6; B0FFLNZG8G</td>
+    </tr>
+    <tr>
+      <td>颜色</td>
+      <td>silver（银色）</td>
+      <td>明显下降</td>
+      <td>9950.0</td>
+      <td>16300.0</td>
+      <td>-39.0%</td>
+      <td>120</td>
+      <td>B0FYFKVHDJ; B0FH6RB126; B0FFKZYLV1; B0G51DDZ1K; B0F242X7XM</td>
+    </tr>
+    <tr>
+      <td>包装/规格</td>
+      <td>15 sizes（15尺寸）</td>
+      <td>小幅下降</td>
+      <td>13150.0</td>
+      <td>15150.0</td>
+      <td>-13.2%</td>
+      <td>99</td>
+      <td>B0F9WTWVSH; B0F9WSK15R; B0F9WX5HH3; B0F9WSJPNY; B0FBWGNVS6</td>
+    </tr>
+    <tr>
+      <td>颜色</td>
+      <td>white（白色）</td>
+      <td>小幅下降</td>
+      <td>12400.0</td>
+      <td>14200.0</td>
+      <td>-12.7%</td>
+      <td>224</td>
+      <td>B0FQBX8NGT; B0G5114KDF; B0FBWGNVS6; B0FYFKVTQV; B0FFKZYLV1</td>
+    </tr>
+    <tr>
+      <td>工艺/效果</td>
+      <td>ombre（渐变）</td>
+      <td>小幅下降</td>
+      <td>9650.0</td>
+      <td>12650.0</td>
+      <td>-23.7%</td>
+      <td>191</td>
+      <td>B0FQBX8NGT; B0FD9RTH4W; B0FQBG1Y9Z; B0GKG18FKR; B0G51LC5LC</td>
+    </tr>
+    <tr>
+      <td>图案/主题</td>
+      <td>polka dot（波点）</td>
+      <td>明显下降</td>
+      <td>5600.0</td>
+      <td>11450.0</td>
+      <td>-51.1%</td>
+      <td>69</td>
+      <td>B0FYFKVHDJ; B0G4ZW273H; B0FQBLW4YX; B0FF44F3P4; B0G6BGXJTY</td>
+    </tr>
+    <tr>
+      <td>颜色</td>
+      <td>purple（紫色）</td>
+      <td>明显下降</td>
+      <td>5800.0</td>
+      <td>9500.0</td>
+      <td>-39.0%</td>
+      <td>64</td>
+      <td>B0F9WTMDCG; B0F9WVD6NS; B0F9WVF49V; B0G517TLDJ; B0F9WSZRZC</td>
+    </tr>
+    <tr>
+      <td>工艺/效果</td>
+      <td>chrome（镜面/镀铬）</td>
+      <td>小幅下降</td>
+      <td>6800.0</td>
+      <td>9450.0</td>
+      <td>-28.0%</td>
+      <td>74</td>
+      <td>B0FH6RB126; B0F242X7XM; B0G51DDZ1K; B0G1YDXRLX; B0FFZ8ZC6Q</td>
+    </tr>
+    <tr>
+      <td>颜色</td>
+      <td>gold（金色）</td>
+      <td>明显下降</td>
+      <td>4600.0</td>
+      <td>8600.0</td>
+      <td>-46.5%</td>
+      <td>222</td>
+      <td>B0FHK5KK8Y; B0FSKJ87HZ; B0FFLMYTNZ; B0FYFPNDW6; B0FFLNZ4RZ</td>
+    </tr>
+    <tr>
+      <td>颜色</td>
+      <td>brown（棕色）</td>
+      <td>明显下降</td>
+      <td>4350.0</td>
+      <td>8600.0</td>
+      <td>-49.4%</td>
+      <td>98</td>
+      <td>B0F9WT7MQ4; B0F9WSK15R; B0FFLNYVVT; B0F9WSJPNY; B0FF44F4CH</td>
+    </tr>
+    <tr>
+      <td>颜色</td>
+      <td>black（黑色）</td>
+      <td>明显下降</td>
+      <td>4750.0</td>
+      <td>8550.0</td>
+      <td>-44.4%</td>
+      <td>123</td>
+      <td>B0F243B17P; B0FFLNZG8G; B0FBWFL6B6; B0FF44F3P4; B0F9WVF49V</td>
+    </tr>
+    <tr>
+      <td>甲型</td>
+      <td>squoval（方圆形）</td>
+      <td>小幅下降</td>
+      <td>5950.0</td>
+      <td>7450.0</td>
+      <td>-20.1%</td>
+      <td>20</td>
+      <td>B0F9WTMDCG; B0F9WTWVSH; B0G6BWZXL8; B0F9WRVZQ2; B0GLGKLYHZ</td>
+    </tr>
+    <tr>
+      <td>图案/主题</td>
+      <td>star（星星）</td>
+      <td>小幅下降</td>
+      <td>3100.0</td>
+      <td>4650.0</td>
+      <td>-33.3%</td>
+      <td>71</td>
+      <td>B0FSKJ87HZ; B0FZGC4TL8; B0G6BNVK1D; B0FF3W17GL; B0FYFH8LBY</td>
+    </tr>
+    <tr>
+      <td>图案/主题</td>
+      <td>leopard（豹纹）</td>
+      <td>明显下降</td>
+      <td>2500.0</td>
+      <td>4350.0</td>
+      <td>-42.5%</td>
+      <td>62</td>
+      <td>B0FF44F4CH; B0FH6B74DN; B0FFLHJK9G; B0G51C6VHV; B0FH55WNFT</td>
+    </tr>
+    <tr>
+      <td>甲型</td>
+      <td>round（圆形）</td>
+      <td>明显下降</td>
+      <td>2250.0</td>
+      <td>3800.0</td>
+      <td>-40.8%</td>
+      <td>18</td>
+      <td>B0FKN4MLPB; B0FPD2DL2Z; B0FR9STNFX; B0G7ZKJFWX; B0FMY41HM5</td>
+    </tr>
+  </tbody>
+</table></div>
+<h2>六、父体口径：下降属性信号</h2>
+<div class='section'><table border="1" class="dataframe data-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>group</th>
+      <th>attribute</th>
+      <th>trend</th>
+      <th>recent_3m_sales</th>
+      <th>prev_3m_sales</th>
+      <th>recent_vs_prev_growth</th>
+      <th>asin_count</th>
+      <th>example_asins</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>图案/主题</td>
+      <td>maple leaf（枫叶）</td>
+      <td>小幅下降</td>
+      <td>65983.0</td>
+      <td>75094.0</td>
+      <td>-12.1%</td>
+      <td>9</td>
+      <td>B0FRSSHBPC; B0FR9K257T; B0FD7FBPG7; B0FLCKTQC3; B0GHP8X6C6</td>
+    </tr>
+  </tbody>
+</table></div>
+<h2>七、子体口径：上升标题词</h2>
+<div class='section'><table border="1" class="dataframe data-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>token</th>
+      <th>trend</th>
+      <th>recent_3m_sales</th>
+      <th>prev_3m_sales</th>
+      <th>recent_vs_prev_growth</th>
+      <th>asin_count</th>
+      <th>example_asins</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>all</td>
+      <td>明显上升</td>
+      <td>27000.0</td>
+      <td>15400.0</td>
+      <td>75.3%</td>
+      <td>80</td>
+      <td>B0G5135C6Z; B0G51N2GRN; B0G5175YHW</td>
+    </tr>
+    <tr>
+      <td>one</td>
+      <td>明显上升</td>
+      <td>27000.0</td>
+      <td>15400.0</td>
+      <td>75.3%</td>
+      <td>78</td>
+      <td>B0G5135C6Z; B0G51N2GRN; B0G5114KDF</td>
+    </tr>
+    <tr>
+      <td>wear</td>
+      <td>明显上升</td>
+      <td>25350.0</td>
+      <td>18400.0</td>
+      <td>37.8%</td>
+      <td>88</td>
+      <td>B0G5135C6Z; B0G6BWZXL8; B0G6BBFXHT</td>
+    </tr>
+    <tr>
+      <td>extra</td>
+      <td>明显上升</td>
+      <td>24750.0</td>
+      <td>16700.0</td>
+      <td>48.2%</td>
+      <td>107</td>
+      <td>B0G5135C6Z; B0FQBX8NGT; B0G6BWZXL8</td>
+    </tr>
+    <tr>
+      <td>week</td>
+      <td>明显上升</td>
+      <td>24300.0</td>
+      <td>17200.0</td>
+      <td>41.3%</td>
+      <td>54</td>
+      <td>B0G5135C6Z; B0G69HS2YY; B0G6BTKMYG</td>
+    </tr>
+    <tr>
+      <td>long</td>
+      <td>小幅上升</td>
+      <td>22150.0</td>
+      <td>18650.0</td>
+      <td>18.8%</td>
+      <td>262</td>
+      <td>B0FX3BGY6C; B0G6BTKMYG; B0FYFKVTQV</td>
+    </tr>
+    <tr>
+      <td>lasting</td>
+      <td>小幅上升</td>
+      <td>17650.0</td>
+      <td>14300.0</td>
+      <td>23.4%</td>
+      <td>155</td>
+      <td>B0FX3BGY6C; B0G59G34KS; B0FYFKVTQV</td>
+    </tr>
+    <tr>
+      <td>flower</td>
+      <td>小幅上升</td>
+      <td>13850.0</td>
+      <td>11400.0</td>
+      <td>21.5%</td>
+      <td>362</td>
+      <td>B0G5114KDF; B0G5175YHW; B0G51N2GRN</td>
+    </tr>
+    <tr>
+      <td>pastel</td>
+      <td>明显上升</td>
+      <td>10900.0</td>
+      <td>3650.0</td>
+      <td>198.6%</td>
+      <td>49</td>
+      <td>B0G51N2GRN; B0G5175YHW; B0G4ZW273H</td>
+    </tr>
+    <tr>
+      <td>pearl</td>
+      <td>小幅上升</td>
+      <td>8100.0</td>
+      <td>7150.0</td>
+      <td>13.3%</td>
+      <td>142</td>
+      <td>B0FX3BGY6C; B0FYFPNDW6; B0F6LNVG8P</td>
+    </tr>
+    <tr>
+      <td>handmade</td>
+      <td>明显上升</td>
+      <td>5500.0</td>
+      <td>3800.0</td>
+      <td>44.7%</td>
+      <td>803</td>
+      <td>B0GR82GC9D; B0GR8B3P7M; B0G4KBMXS6</td>
+    </tr>
+    <tr>
+      <td>blue</td>
+      <td>明显上升</td>
+      <td>5200.0</td>
+      <td>3800.0</td>
+      <td>36.8%</td>
+      <td>133</td>
+      <td>B0F9WX5HH3; B0G4ZW273H; B0FYFPNDW6</td>
+    </tr>
+    <tr>
+      <td>colorful</td>
+      <td>明显上升</td>
+      <td>4600.0</td>
+      <td>3050.0</td>
+      <td>50.8%</td>
+      <td>63</td>
+      <td>B0GFW5KYD1; B0FR54NVSJ; B0FZGC4TL8</td>
+    </tr>
+    <tr>
+      <td>floral</td>
+      <td>明显上升</td>
+      <td>4050.0</td>
+      <td>2450.0</td>
+      <td>65.3%</td>
+      <td>274</td>
+      <td>B0FLCMX7YH; B0F8J8SK9X; B0GR82GC9D</td>
+    </tr>
+    <tr>
+      <td>spring</td>
+      <td>明显上升</td>
+      <td>4000.0</td>
+      <td>2450.0</td>
+      <td>63.3%</td>
+      <td>79</td>
+      <td>B0FLCMX7YH; B0GLY7QDZW; B0GR8B3P7M</td>
+    </tr>
+    <tr>
+      <td>calm</td>
+      <td>明显上升</td>
+      <td>3400.0</td>
+      <td>50.0</td>
+      <td>6700.0%</td>
+      <td>3</td>
+      <td>B0G5135C6Z; B0GH1DQ2Y6; B0G4ZZCQXB</td>
+    </tr>
+    <tr>
+      <td>green</td>
+      <td>明显上升</td>
+      <td>3350.0</td>
+      <td>2250.0</td>
+      <td>48.9%</td>
+      <td>60</td>
+      <td>B0G51N2GRN; B0G51DJTL3; B0G519JZMK</td>
+    </tr>
+    <tr>
+      <td>light</td>
+      <td>明显上升</td>
+      <td>3300.0</td>
+      <td>950.0</td>
+      <td>247.4%</td>
+      <td>35</td>
+      <td>B0G4ZHNB1D; B0G4ZVM4J5; B0FFLNTQSW</td>
+    </tr>
+    <tr>
+      <td>yellow</td>
+      <td>明显上升</td>
+      <td>3150.0</td>
+      <td>1050.0</td>
+      <td>200.0%</td>
+      <td>55</td>
+      <td>B0G516LLXT; B0G51GVH2T; B0G4ZQH19V</td>
+    </tr>
+    <tr>
+      <td>stiletto</td>
+      <td>小幅上升</td>
+      <td>2950.0</td>
+      <td>2500.0</td>
+      <td>18.0%</td>
+      <td>57</td>
+      <td>B0G6BTKMYG; B0G6BL72QZ; B0FCFJJVTK</td>
+    </tr>
+    <tr>
+      <td>rhinestones</td>
+      <td>明显上升</td>
+      <td>2950.0</td>
+      <td>1150.0</td>
+      <td>156.5%</td>
+      <td>106</td>
+      <td>B0GFW5KYD1; B0FQCR4261; B0FQ5XN2JX</td>
+    </tr>
+    <tr>
+      <td>gifts</td>
+      <td>小幅上升</td>
+      <td>2900.0</td>
+      <td>2200.0</td>
+      <td>31.8%</td>
+      <td>39</td>
+      <td>B0FR54NVSJ; B0FJFVFQX5; B0FR58H6ZK</td>
+    </tr>
+    <tr>
+      <td>beginners</td>
+      <td>明显上升</td>
+      <td>2900.0</td>
+      <td>600.0</td>
+      <td>383.3%</td>
+      <td>31</td>
+      <td>B0GK27GTD8; B0GGZNC52N; B0GH1DQ2Y6</td>
+    </tr>
+    <tr>
+      <td>sky</td>
+      <td>明显上升</td>
+      <td>2800.0</td>
+      <td>1050.0</td>
+      <td>166.7%</td>
+      <td>9</td>
+      <td>B0G5175YHW; B0G4ZVM4J5; B0GH1N3CWP</td>
+    </tr>
+    <tr>
+      <td>power</td>
+      <td>明显上升</td>
+      <td>2800.0</td>
+      <td>0.0</td>
+      <td>100.0%</td>
+      <td>1</td>
+      <td>B0G5135C6Z</td>
+    </tr>
+    <tr>
+      <td>berry</td>
+      <td>明显上升</td>
+      <td>2650.0</td>
+      <td>1950.0</td>
+      <td>35.9%</td>
+      <td>14</td>
+      <td>B0GK27GTD8; B0F9WSYH1S; B0G519JZMK</td>
+    </tr>
+    <tr>
+      <td>mixed</td>
+      <td>明显上升</td>
+      <td>2550.0</td>
+      <td>500.0</td>
+      <td>410.0%</td>
+      <td>10</td>
+      <td>B0GFW5KYD1; B0FYFPNDW6; B0GCF7RCN4</td>
+    </tr>
+    <tr>
+      <td>brighter</td>
+      <td>明显上升</td>
+      <td>2300.0</td>
+      <td>450.0</td>
+      <td>411.1%</td>
+      <td>12</td>
+      <td>B0G6BL72QZ; B0F89TQJX4; B0G6BKP81J</td>
+    </tr>
+    <tr>
+      <td>sweet</td>
+      <td>明显上升</td>
+      <td>2250.0</td>
+      <td>1600.0</td>
+      <td>40.6%</td>
+      <td>34</td>
+      <td>B0FR54NVSJ; B0FNMRZ44X; B0GH1SF33R</td>
+    </tr>
+    <tr>
+      <td>years</td>
+      <td>明显上升</td>
+      <td>2150.0</td>
+      <td>1550.0</td>
+      <td>38.7%</td>
+      <td>23</td>
+      <td>B0FR54NVSJ; B0FR58H6ZK; B0FJRHLKKM</td>
+    </tr>
+    <tr>
+      <td>old</td>
+      <td>明显上升</td>
+      <td>2150.0</td>
+      <td>1500.0</td>
+      <td>43.3%</td>
+      <td>15</td>
+      <td>B0FR54NVSJ; B0FR58H6ZK; B0FR4Z2GMY</td>
+    </tr>
+    <tr>
+      <td>luxury</td>
+      <td>明显上升</td>
+      <td>2050.0</td>
+      <td>1450.0</td>
+      <td>41.4%</td>
+      <td>255</td>
+      <td>B0FJY1GVLQ; B0G1SSG6G8; B0G1KXDKCN</td>
+    </tr>
+    <tr>
+      <td>blush</td>
+      <td>明显上升</td>
+      <td>2050.0</td>
+      <td>1500.0</td>
+      <td>36.7%</td>
+      <td>43</td>
+      <td>B0G59G34KS; B0G59DY755; B0G3XHHRFG</td>
+    </tr>
+    <tr>
+      <td>jelly</td>
+      <td>明显上升</td>
+      <td>2000.0</td>
+      <td>1250.0</td>
+      <td>60.0%</td>
+      <td>15</td>
+      <td>B0FR54NVSJ; B0FR58H6ZK; B0FR4Z2GMY</td>
+    </tr>
+    <tr>
+      <td>birthday</td>
+      <td>明显上升</td>
+      <td>2000.0</td>
+      <td>1250.0</td>
+      <td>60.0%</td>
+      <td>14</td>
+      <td>B0FR54NVSJ; B0FR58H6ZK; B0FR4Z2GMY</td>
+    </tr>
+    <tr>
+      <td>gems</td>
+      <td>明显上升</td>
+      <td>2000.0</td>
+      <td>1000.0</td>
+      <td>100.0%</td>
+      <td>5</td>
+      <td>B0GFW5KYD1; B0FZGC4TL8; B0GFW2C4L8</td>
+    </tr>
+    <tr>
+      <td>adhesives</td>
+      <td>明显上升</td>
+      <td>1900.0</td>
+      <td>1250.0</td>
+      <td>52.0%</td>
+      <td>14</td>
+      <td>B0FR54NVSJ; B0FR58H6ZK; B0FR4Z2GMY</td>
+    </tr>
+    <tr>
+      <td>grace</td>
+      <td>明显上升</td>
+      <td>1900.0</td>
+      <td>100.0</td>
+      <td>1800.0%</td>
+      <td>7</td>
+      <td>B0G4ZY6ZTT; B0G51L9M3T; B0GJTG8V8Y</td>
+    </tr>
+    <tr>
+      <td>easter</td>
+      <td>明显上升</td>
+      <td>1850.0</td>
+      <td>1150.0</td>
+      <td>60.9%</td>
+      <td>9</td>
+      <td>B0FR54NVSJ; B0FR58H6ZK; B0FR4Z2GMY</td>
+    </tr>
+    <tr>
+      <td>daisy</td>
+      <td>明显上升</td>
+      <td>1800.0</td>
+      <td>1300.0</td>
+      <td>38.5%</td>
+      <td>5</td>
+      <td>B0G51N2GRN; B0F8J8SK9X; B0G2YKWCZ4</td>
+    </tr>
+  </tbody>
+</table></div>
+<h2>八、父体口径：上升标题词</h2>
+<div class='section'><table border="1" class="dataframe data-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>token</th>
+      <th>trend</th>
+      <th>recent_3m_sales</th>
+      <th>prev_3m_sales</th>
+      <th>recent_vs_prev_growth</th>
+      <th>asin_count</th>
+      <th>example_asins</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>short</td>
+      <td>小幅上升</td>
+      <td>1280353.0</td>
+      <td>1061047.0</td>
+      <td>20.7%</td>
+      <td>135</td>
+      <td>B0GY2VM69N; B0FBWGNVS6; B0F9WSYH1S</td>
+    </tr>
+    <tr>
+      <td>french</td>
+      <td>小幅上升</td>
+      <td>1097458.0</td>
+      <td>846526.0</td>
+      <td>29.6%</td>
+      <td>122</td>
+      <td>B0GY2WWGTH; B0FBWGNVS6; B0FF44WSV2</td>
+    </tr>
+    <tr>
+      <td>square</td>
+      <td>小幅上升</td>
+      <td>1054798.0</td>
+      <td>834627.0</td>
+      <td>26.4%</td>
+      <td>103</td>
+      <td>B0GY2VM69N; B0FFKZYLV1; B0F9WSK15R</td>
+    </tr>
+    <tr>
+      <td>color</td>
+      <td>小幅上升</td>
+      <td>1052523.0</td>
+      <td>897593.0</td>
+      <td>17.3%</td>
+      <td>127</td>
+      <td>B0FBWGNVS6; B0F9WSYH1S; B0FFLDSNL5</td>
+    </tr>
+    <tr>
+      <td>pink</td>
+      <td>小幅上升</td>
+      <td>871769.0</td>
+      <td>748956.0</td>
+      <td>16.4%</td>
+      <td>98</td>
+      <td>B0FFLG18HQ; B0F9WRY7DP; B0FFL9BTM5</td>
+    </tr>
+    <tr>
+      <td>almond</td>
+      <td>小幅上升</td>
+      <td>870370.0</td>
+      <td>722538.0</td>
+      <td>20.5%</td>
+      <td>102</td>
+      <td>B0F242X7XM; B0F9WSYH1S; B0F242RSVQ</td>
+    </tr>
+    <tr>
+      <td>white</td>
+      <td>明显上升</td>
+      <td>694392.0</td>
+      <td>439794.0</td>
+      <td>57.9%</td>
+      <td>68</td>
+      <td>B0FBWGNVS6; B0F242RSVQ; B0GDZJZDXW</td>
+    </tr>
+    <tr>
+      <td>red</td>
+      <td>小幅上升</td>
+      <td>676095.0</td>
+      <td>564781.0</td>
+      <td>19.7%</td>
+      <td>55</td>
+      <td>B0FBWFL6B6; B0F9WSYH1S; B0GCCD6JDB</td>
+    </tr>
+    <tr>
+      <td>blue</td>
+      <td>明显上升</td>
+      <td>555779.0</td>
+      <td>310525.0</td>
+      <td>79.0%</td>
+      <td>55</td>
+      <td>B0F9WX5HH3; B0F9WV96LS; B0F9WT45J4</td>
+    </tr>
+    <tr>
+      <td>nude</td>
+      <td>明显上升</td>
+      <td>547934.0</td>
+      <td>366773.0</td>
+      <td>49.4%</td>
+      <td>64</td>
+      <td>B0F9WRY7DP; B0FPCZHNBF; B0F6LNVG8P</td>
+    </tr>
+    <tr>
+      <td>long</td>
+      <td>明显上升</td>
+      <td>508626.0</td>
+      <td>316965.0</td>
+      <td>60.5%</td>
+      <td>61</td>
+      <td>B0GDZJZDXW; B0GK21HY9H; B0F6LNVG8P</td>
+    </tr>
+    <tr>
+      <td>gold</td>
+      <td>小幅上升</td>
+      <td>475265.0</td>
+      <td>392643.0</td>
+      <td>21.0%</td>
+      <td>44</td>
+      <td>B0FF3W17GL; B0FF44WSV2; B0F996FYZG</td>
+    </tr>
+    <tr>
+      <td>glossy</td>
+      <td>小幅上升</td>
+      <td>464543.0</td>
+      <td>380981.0</td>
+      <td>21.9%</td>
+      <td>63</td>
+      <td>B0F9WT45J4; B0F6LNVG8P; B0GK21HY9H</td>
+    </tr>
+    <tr>
+      <td>black</td>
+      <td>小幅上升</td>
+      <td>455037.0</td>
+      <td>341568.0</td>
+      <td>33.2%</td>
+      <td>53</td>
+      <td>B0F9WVF49V; B0FFLDSNL5; B0FQ613MHJ</td>
+    </tr>
+    <tr>
+      <td>lamp</td>
+      <td>小幅上升</td>
+      <td>453704.0</td>
+      <td>389192.0</td>
+      <td>16.6%</td>
+      <td>18</td>
+      <td>B0FBWGNVS6; B0GHHDGMZD; B0FF44WSV2</td>
+    </tr>
+    <tr>
+      <td>pattern</td>
+      <td>小幅上升</td>
+      <td>450951.0</td>
+      <td>337873.0</td>
+      <td>33.5%</td>
+      <td>49</td>
+      <td>B0GY2VM69N; B0F242RSVQ; B0DJ79GB6R</td>
+    </tr>
+    <tr>
+      <td>name</td>
+      <td>小幅上升</td>
+      <td>429473.0</td>
+      <td>331988.0</td>
+      <td>29.4%</td>
+      <td>45</td>
+      <td>B0GY2VM69N; B0F242RSVQ; B0DJ79GB6R</td>
+    </tr>
+    <tr>
+      <td>oval</td>
+      <td>小幅上升</td>
+      <td>415455.0</td>
+      <td>337690.0</td>
+      <td>23.0%</td>
+      <td>28</td>
+      <td>B0FBWGNVS6; B0FBWFTR91; B0FD7GD499</td>
+    </tr>
+    <tr>
+      <td>silver</td>
+      <td>明显上升</td>
+      <td>414434.0</td>
+      <td>269603.0</td>
+      <td>53.7%</td>
+      <td>24</td>
+      <td>B0FFL13G4H; B0F2437H1W; B0F9WV96LS</td>
+    </tr>
+    <tr>
+      <td>brown</td>
+      <td>明显上升</td>
+      <td>412245.0</td>
+      <td>280515.0</td>
+      <td>47.0%</td>
+      <td>37</td>
+      <td>B0F9WSK15R; B0F9WT7MQ4; B0GDZJZDXW</td>
+    </tr>
+    <tr>
+      <td>pearl</td>
+      <td>明显上升</td>
+      <td>380648.0</td>
+      <td>209801.0</td>
+      <td>81.4%</td>
+      <td>42</td>
+      <td>B0F9WTB2V5; B0GK8P6H81; B0F6LNVG8P</td>
+    </tr>
+    <tr>
+      <td>blush</td>
+      <td>明显上升</td>
+      <td>372334.0</td>
+      <td>135783.0</td>
+      <td>174.2%</td>
+      <td>20</td>
+      <td>B0FFL13G4H; B0F2426PP5; B0G3XRXJ5V</td>
+    </tr>
+    <tr>
+      <td>leopard</td>
+      <td>小幅上升</td>
+      <td>371488.0</td>
+      <td>323913.0</td>
+      <td>14.7%</td>
+      <td>24</td>
+      <td>B0FFLHJK9G; B0F9WTB2V5; B0FCFZV4S9</td>
+    </tr>
+    <tr>
+      <td>curable</td>
+      <td>小幅上升</td>
+      <td>361618.0</td>
+      <td>317543.0</td>
+      <td>13.9%</td>
+      <td>12</td>
+      <td>B0FBWGNVS6; B0FF44WSV2; B0FF44F4CH</td>
+    </tr>
+    <tr>
+      <td>line</td>
+      <td>明显上升</td>
+      <td>360236.0</td>
+      <td>256015.0</td>
+      <td>40.7%</td>
+      <td>24</td>
+      <td>B0FFLMYTNZ; B0GBVTVW1N; B0FD7FBPG7</td>
+    </tr>
+    <tr>
+      <td>purple</td>
+      <td>小幅上升</td>
+      <td>358003.0</td>
+      <td>274843.0</td>
+      <td>30.3%</td>
+      <td>31</td>
+      <td>B0F9WVF49V; B0F9WTC5BF; B0DJ7BHZCX</td>
+    </tr>
+    <tr>
+      <td>flower</td>
+      <td>小幅上升</td>
+      <td>354947.0</td>
+      <td>286202.0</td>
+      <td>24.0%</td>
+      <td>50</td>
+      <td>B0F9WTKZ3V; B0FFM14W36; B0F996FYZG</td>
+    </tr>
+    <tr>
+      <td>wear</td>
+      <td>明显上升</td>
+      <td>335087.0</td>
+      <td>131928.0</td>
+      <td>154.0%</td>
+      <td>29</td>
+      <td>B0GDZJZDXW; B0GLGKLYHZ; B0G51SD7PP</td>
+    </tr>
+    <tr>
+      <td>glitter</td>
+      <td>小幅上升</td>
+      <td>329634.0</td>
+      <td>291822.0</td>
+      <td>13.0%</td>
+      <td>46</td>
+      <td>B0F2437H1W; B0G1BR7TFZ; B0FR9R5YGP</td>
+    </tr>
+    <tr>
+      <td>lasting</td>
+      <td>明显上升</td>
+      <td>326235.0</td>
+      <td>219564.0</td>
+      <td>48.6%</td>
+      <td>27</td>
+      <td>B0GK21HY9H; B0F6LNVG8P; B0GGZVQCLR</td>
+    </tr>
+    <tr>
+      <td>ombre</td>
+      <td>明显上升</td>
+      <td>294465.0</td>
+      <td>214384.0</td>
+      <td>37.4%</td>
+      <td>32</td>
+      <td>B0FFLS4DPP; B0FQBX8NGT; B0FR9GNVTJ</td>
+    </tr>
+    <tr>
+      <td>extra</td>
+      <td>明显上升</td>
+      <td>288180.0</td>
+      <td>131446.0</td>
+      <td>119.2%</td>
+      <td>21</td>
+      <td>B0GY2WWGTH; B0FR9STNFX; B0FFKZQ3QK</td>
+    </tr>
+    <tr>
+      <td>ons</td>
+      <td>明显上升</td>
+      <td>281434.0</td>
+      <td>175814.0</td>
+      <td>60.1%</td>
+      <td>53</td>
+      <td>B0DJ79GB6R; B0FVY86YWW; B0G1XWX1JY</td>
+    </tr>
+    <tr>
+      <td>dot</td>
+      <td>明显上升</td>
+      <td>278690.0</td>
+      <td>187807.0</td>
+      <td>48.4%</td>
+      <td>24</td>
+      <td>B0FF44F3P4; B0FQBLW4YX; B0FSL7ZV17</td>
+    </tr>
+    <tr>
+      <td>veil</td>
+      <td>明显上升</td>
+      <td>257491.0</td>
+      <td>106776.0</td>
+      <td>141.2%</td>
+      <td>9</td>
+      <td>B0FFKZYLV1; B0G3XP1247; B0G51BY3Y9</td>
+    </tr>
+    <tr>
+      <td>lines</td>
+      <td>明显上升</td>
+      <td>251974.0</td>
+      <td>150496.0</td>
+      <td>67.4%</td>
+      <td>10</td>
+      <td>B0FFKZYLV1; B0FD7HJVK7; B0FD7GQG9R</td>
+    </tr>
+    <tr>
+      <td>gradient</td>
+      <td>小幅上升</td>
+      <td>248865.0</td>
+      <td>203831.0</td>
+      <td>22.1%</td>
+      <td>30</td>
+      <td>B0FFL9BTM5; B0FQBX8NGT; B0FF94MMGC</td>
+    </tr>
+    <tr>
+      <td>solid</td>
+      <td>明显上升</td>
+      <td>248187.0</td>
+      <td>147138.0</td>
+      <td>68.7%</td>
+      <td>28</td>
+      <td>B0GHHDGMZD; B0FPCZHNBF; B0FY5VJPMN</td>
+    </tr>
+    <tr>
+      <td>summer</td>
+      <td>明显上升</td>
+      <td>247258.0</td>
+      <td>119135.0</td>
+      <td>107.5%</td>
+      <td>36</td>
+      <td>B0DJ79GB6R; B0GWZXLZXV; B0GVJWT3KJ</td>
+    </tr>
+    <tr>
+      <td>green</td>
+      <td>明显上升</td>
+      <td>245866.0</td>
+      <td>131243.0</td>
+      <td>87.3%</td>
+      <td>31</td>
+      <td>B0F9WTQSDB; B0G5147RTJ; B0GK2B2MV2</td>
+    </tr>
+  </tbody>
+</table></div>
+<h2>九、被剔除的疑似单独指甲油/非穿戴甲产品</h2>
+<div class='section'><p>本轮未识别到需要剔除的单独指甲油产品。</p></div>
+<h2>十、下一步市场建议</h2>
+<ul>
+<li>第一轮不要直接做大而全的 SKU，先用趋势属性挑 2-3 条方向做小批量测试。</li>
+<li>优先选择“销量上升 + 属性明确 + 不是纯品牌词堆出来”的组合，例如颜色 × 甲型 × 工艺。</li>
+<li>如果一个词父体口径强但子体口径弱，说明可能是大父体带动，不一定代表该属性单独好卖。</li>
+<li>如果一个词子体口径强且近期增长明显，更值得作为新品方向候选。</li>
+</ul>
+<div class='footer'>生成文件包含：全量明细、属性趋势 CSV、标题词趋势 CSV、网页报告。所有文件均保存在当前项目目录下。</div>
+</main>
+</body>
+</html>
